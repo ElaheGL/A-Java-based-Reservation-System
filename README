@@ -1,0 +1,73 @@
+# Bus Reservation System
+
+This project is a simple Java-based Bus Reservation System. It allows users to manage buses, routes, and reservations efficiently.
+
+## Features
+
+- Add new buses with their capacity.
+- Add new routes for buses with specific departure times.
+- Make reservations for available routes.
+- GUI interface for easy interaction.
+
+## Setup and Installation
+
+### Prerequisites
+
+- Java Development Kit (JDK) 8 or higher
+- SQLite JDBC driver
+
+##Set up the database:
+
+- Ensure you have SQLite installed.
+- Create a database file named Jdbc.db.
+- Execute the following SQL commands to set up the required tables:
+
+ CREATE TABLE BusData (
+     plate TEXT PRIMARY KEY,
+     capacity INTEGER
+ );
+
+ CREATE TABLE RouteData (
+    origin TEXT,
+    destenation TEXT,
+    plate TEXT,
+    departureTime TEXT,
+    FOREIGN KEY (plate) REFERENCES BusData (plate)
+ );
+
+ CREATE TABLE ReservationData (
+    origin TEXT,
+    destenation TEXT,
+    departureTime TEXT,
+    capacity INTEGER
+ );
+ 
+## Download and include the SQLite JDBC driver:
+
+- Download the SQLite JDBC driver from the official website (https://bitbucket.org/xerial/sqlite-jdbc/downloads/).
+- Add the downloaded JAR file to your project's classpath.
+ 
+##Compile and run the application:
+
+- Compile the project using your preferred IDE or command line.
+- Run the UIdesigh class to start the application.
+
+##Usage
+
+###Adding Buses:
+
+- Enter the bus plate and capacity, then click "ADD TO LIST".
+- Deleting Buses:
+
+- Enter the bus plate, then click "DELETE".
+
+###Managing Routes:
+
+- Click "ROUTE" to open the route management window.
+- Enter the origin, destination, departure time, select a bus plate, then click "ADD" to add a route.
+- To delete a route, enter the origin, destination, and departure time, then click "DELETE".
+
+###Making Reservations:
+
+- Click "NEXT" to open the reservation interface.
+- Select a route from the table, enter the number of tickets, then click "Confirm" to make a reservation.
